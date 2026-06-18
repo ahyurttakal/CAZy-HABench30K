@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this code or the CAZy-HABench30K benchmark, please cite the associated manuscript and dataset."
+title: "CAZy-HABench30K Code"
+authors:
+  - family-names: "Yurttakal"
+    given-names: "Ahmet"
+repository-code: "https://github.com/ahyurttakal/<insert-repository-name>"
+date-released: "2026-06-18"
+license: "MIT"
+preferred-citation:
+  type: article
+  title: "Homology-aware benchmarking of deep learning models for CAZy enzyme family classification"
+  authors:
+    - family-names: "Yurttakal"
+      given-names: "Ahmet"
+  year: 2026
+  notes: "Manuscript under revision. Please update this citation after publication."
