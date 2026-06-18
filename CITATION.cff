@@ -1,17 +1,50 @@
 cff-version: 1.2.0
-message: "If you use this code or the CAZy-HABench30K benchmark, please cite the associated manuscript and dataset."
+message: "If you use this code or the CAZy-HABench30K benchmark dataset, please cite the associated manuscript and dataset."
 title: "CAZy-HABench30K"
+abstract: "Reproducibility code for CAZy-HABench30K, a homology-aware benchmark dataset and evaluation framework for CAZy enzyme family classification."
 authors:
-  - family-names: "Yurttakal"
-    given-names: "Ahmet"
-repository-code: "https://github.com/ahyurttakal/CAZy-HABench30K"
-date-released: "2026-06-18"
-license: "MIT"
+
+* family-names: "Yurttakal"
+  given-names: "Ahmet Haşim"
+* family-names: "Erbay"
+  given-names: "Hasan"
+  repository-code: "https://github.com/ahyurttakal/CAZy-HABench30K"
+  url: "https://github.com/ahyurttakal/CAZy-HABench30K"
+  date-released: "2026-06-18"
+  license: "MIT"
+  keywords:
+* "CAZy"
+* "enzyme family classification"
+* "homology-aware benchmark"
+* "protein language models"
+* "ESM-2"
+* "MMseqs2"
+* "homology leakage"
+* "bioinformatics"
+
 preferred-citation:
-  type: article
-  title: "Homology-aware benchmarking of deep learning models for CAZy enzyme family classification"
+type: article
+title: "Homology-aware benchmarking of deep learning models for CAZy enzyme family classification"
+authors:
+- family-names: "Yurttakal"
+given-names: "Ahmet Haşim"
+- family-names: "Erbay"
+given-names: "Hasan"
+year: 2026
+notes: "Manuscript under revision. Please update this citation after publication."
+
+references:
+
+* type: dataset
+  title: "CAZy-HABench30K: A Homology-Aware Benchmark Dataset for CAZy Enzyme Family Classification"
   authors:
-    - family-names: "Yurttakal"
-      given-names: "Ahmet"
-  year: 2026
-  notes: "Manuscript under revision. Please update this citation after publication."
+
+  * family-names: "Yurttakal"
+    given-names: "Ahmet Haşim"
+  * family-names: "Erbay"
+    given-names: "Hasan"
+    year: 2026
+    publisher: "Mendeley Data"
+    version: "V1"
+    doi: "10.17632/m9r9pb39jw"
+
