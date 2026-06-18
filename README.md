@@ -90,6 +90,10 @@ Please update local file paths and training arguments according to your computin
 
 If you use this repository or the CAZy-HABench30K dataset, please cite the associated manuscript and the Mendeley Data record.
 
+```text
+Yurttakal, Ahmet Haşim; Erbay, Hasan (2026), “CAZy-HABench30K: A Homology-Aware Benchmark Dataset for CAZy Enzyme Family Classification”, Mendeley Data, V1, doi: 10.17632/m9r9pb39jw
+```
+
 ## License
 
 This code is released under the MIT License.
