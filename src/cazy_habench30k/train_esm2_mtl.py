@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-CAZy Enzyme Classification — Full benchmark Comparison Suite v8
+CAZy Enzyme Classification — Full benchmark Comparison Suite 
 ========================================================
 Baselines : HBI | CNN | ESM-2 (frozen) | ProtBERT
-Proposed  : ESM-2 + Mean Pooling + Hierarchical Multi-Task (old-runner style)
+Proposed  : ESM-2 + Mean Pooling + Hierarchical Multi-Task
 
 Proposed components:
   ① Two-stage training  — Stage-1 frozen backbone, Stage-2 last-n unfreeze
@@ -24,14 +24,14 @@ Analyses / outputs:
   • Publication-ready CSV / LaTeX tables
 
 Example:
-  python comparison_v8.py \
-      --train_fasta data/splits_v7/train.fasta \
-      --val_fasta data/splits_v7/val.fasta \
-      --test_fasta data/splits_v7/test.fasta \
-      --train_labels data/splits_v7/train_labels.csv \
-      --val_labels data/splits_v7/val_labels.csv \
-      --test_labels data/splits_v7/test_labels.csv \
-      --out results/comparison_v8 \
+  python train_esm2_mtl.py \
+      --train_fasta data/splits/train.fasta \
+      --val_fasta data/splits/val.fasta \
+      --test_fasta data/splits/test.fasta \
+      --train_labels data/splits/train_labels.csv \
+      --val_labels data/splits/val_labels.csv \
+      --test_labels data/splits/test_labels.csv \
+      --out results/comparison \
       --models hbi,cnn,esm_frozen,protbert,proposed \
       --epochs 5 \
       --epochs_stage1 10 \
