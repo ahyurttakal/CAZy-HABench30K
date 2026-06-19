@@ -2,25 +2,9 @@
 # -*- coding: utf-8 -*-
 
 """
-UniProt-CAZy benchmark Benchmark Builder (v2 — CE/AA genişletilmiş)
+UniProt-CAZy benchmark Benchmark Builder 
 
-Değişiklikler v1'den:
-  [FIX-CE]  CE family'leri v1'de min_per_family eşiğini geçemiyordu.
-            Artık CE ve AA için per-class eşik override destekleniyor
-            (--ce_min_per_family, --aa_min_per_family).
-  [FIX-CE2] CE UniProt cross-reference sorguları yetersizse ek fallback
-            sorgu şablonları deneniyor (carbohydrate esterase keyword).
-  [FIX-AA]  AA için de aynı fallback mekanizması eklendi.
-  [NEW-1]   Round-robin öncelik sırası: CE ve AA ilk sırada —
-            target_total'a ulaşılmadan CE/AA dışarıda kalmasın.
-  [NEW-2]   --priority_classes argümanı: hangi class'ların önce
-            doldurulacağını belirler (default: "CE,AA").
-  [NEW-3]   Per-class coverage raporu (kaç family, kaç seq, % of target).
-  [NEW-4]   family_hits_uniprot.csv artık fallback sorgudan gelen hit
-            sayısını da gösteriyor (hits_fallback sütunu).
-
-Kullanım (30k, CE+AA dahil):
-  python cazy_v2.py \\
+  python build_dataset.py \\
       --out UniProt-CAZy-benchmark-30k \\
       --target_total 30000 \\
       --min_per_family 100 \\
@@ -28,8 +12,6 @@ Kullanım (30k, CE+AA dahil):
       --aa_min_per_family 20 \\
       --max_per_family 600 \\
       --priority_classes CE,AA
-
-Not: Homology-aware split için homology.py kullanın.
 """
 
 from __future__ import annotations
