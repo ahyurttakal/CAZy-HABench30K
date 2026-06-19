@@ -1,28 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+
 """
-CAZy Homology-Aware Split v7 (Ubuntu / Linux)
+CAZy Homology-Aware Split
 =============================================
 
-Amaç:
-  - Homology-aware split
-  - Family coverage'i mümkün olduğunca korumak
-  - Train/val/test oranlarını hedefe yaklaştırmak
-  - ID normalizasyonu ve cluster temizleme hatalarını önlemek
-
-Öne çıkanlar:
-  1) UniProt pipe ID normalizasyonu
-  2) MMseqs TSV uyum doğrulaması
-  3) Cluster coverage debug
-  4) Family-aware + ratio-aware split
-  5) Küçük family'lerde sequence-level fallback
-  6) Singleton cluster tabanlı final rebalance
-  7) Detaylı split_report.json
-
-Önerilen kullanım:
-  python homology_split_v7.py \
+  python make_homology_split.py \
       --dataset_dir data/UniProt-CAZy-benchmark-30k \
-      --out         data/splits_v7 \
+      --out         data/splits \
       --test_ratio  0.15 \
       --val_ratio   0.15 \
       --min_seq_id  0.20 \
