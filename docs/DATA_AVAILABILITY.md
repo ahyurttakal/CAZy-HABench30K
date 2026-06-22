@@ -11,7 +11,7 @@ CAZy-HABench30K: A Homology-Aware Benchmark Dataset for CAZy Enzyme Family Class
 Mendeley Data DOI/link:
 
 ```text
-https://doi.org/10.17632/m9r9pb39jw
+https://data.mendeley.com/datasets/m9r9pb39jw/1
 ```
 
 The data package includes FASTA sequences, family/class labels, MMseqs2 cluster assignments, fixed train/validation/test splits, prediction outputs, and result tables.
