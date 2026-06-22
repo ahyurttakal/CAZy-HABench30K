@@ -40,7 +40,7 @@ CAZy-HABench30K/
 The data are available from Mendeley Data:
 
 ```text
-Mendeley Data DOI/link: https://doi.org/10.17632/m9r9pb39jw
+Mendeley Data DOI/link: https://doi.org/10.17632/m9r9pb39jw.1
 ```
 
 The data package includes FASTA sequences, family/class labels, MMseqs2 cluster assignments, fixed train/validation/test splits, prediction outputs, and result tables.
