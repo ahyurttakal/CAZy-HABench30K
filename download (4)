@@ -1,0 +1,10 @@
+import argparse, pandas as pd
+from .metrics import summarize
+from .utils import save_json
+
+def main():
+    ap=argparse.ArgumentParser(); ap.add_argument('--predictions',required=True); ap.add_argument('--out',required=True); args=ap.parse_args()
+    p=pd.read_csv(args.predictions)
+    m=summarize(p.family_true,p.family_pred,p.class_true,p.class_pred)
+    save_json(m,args.out); print(m)
+if __name__=='__main__': main()

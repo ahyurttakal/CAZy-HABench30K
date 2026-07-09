@@ -1,0 +1,60 @@
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+from transformers import AutoModel
+from peft import LoraConfig, get_peft_model
+
+class AttentionPooling(nn.Module):
+    def __init__(self, dim, attn_dim=128):
+        super().__init__(); self.proj=nn.Linear(dim,attn_dim); self.score=nn.Linear(attn_dim,1,bias=False)
+    def forward(self, hidden, mask):
+        s = self.score(torch.tanh(self.proj(hidden))).squeeze(-1)
+        s = s.masked_fill(mask == 0, -1e9)
+        a = torch.softmax(s, dim=-1)
+        return (hidden*a.unsqueeze(-1)).sum(1), a
+
+class HierarchicalConditionalHead(nn.Module):
+    def __init__(self, hidden_dim, num_classes, num_families, family_to_class_id):
+        super().__init__(); self.family_head=nn.Linear(hidden_dim,num_families)
+        mask = torch.full((num_classes,num_families), -1e9)
+        for f,c in family_to_class_id.items(): mask[int(c),int(f)] = 0.0
+        self.register_buffer('mask', mask)
+    def forward(self, u, class_log_prob):
+        raw = self.family_head(u)
+        cond = F.log_softmax(raw.unsqueeze(1) + self.mask.unsqueeze(0), dim=-1)
+        fam_logp = torch.logsumexp(class_log_prob.unsqueeze(-1) + cond, dim=1)
+        return fam_logp, raw
+
+class HierESM(nn.Module):
+    def __init__(self, cfg, label_maps):
+        super().__init__()
+        self.cfg = cfg
+        self.backbone = AutoModel.from_pretrained(cfg['model'].get('backbone','facebook/esm2_t12_35M_UR50D'))
+        lora_cfg = LoraConfig(r=cfg['model'].get('lora_r',16), lora_alpha=cfg['model'].get('lora_alpha',32), lora_dropout=cfg['model'].get('lora_dropout',0.05), target_modules=cfg['model'].get('lora_targets',['query','value']), bias='none')
+        self.backbone = get_peft_model(self.backbone, lora_cfg)
+        dim = getattr(self.backbone.base_model.model.config, 'hidden_size', 480)
+        hidden_dim = cfg['model'].get('hidden_dim',256)
+        self.pool = AttentionPooling(dim) if cfg['model'].get('use_attention_pooling', True) else None
+        self.proj = nn.Sequential(nn.Linear(dim,hidden_dim), nn.LayerNorm(hidden_dim), nn.GELU(), nn.Dropout(cfg['model'].get('dropout',0.2)))
+        self.class_head = nn.Sequential(nn.Linear(hidden_dim,128), nn.GELU(), nn.Dropout(cfg['model'].get('dropout',0.2)), nn.Linear(128,len(label_maps.classes)))
+        self.use_hch = cfg['model'].get('use_hch', True)
+        if self.use_hch:
+            self.family_head = HierarchicalConditionalHead(hidden_dim, len(label_maps.classes), len(label_maps.families), label_maps.family_to_class_id)
+        else:
+            self.family_head = nn.Linear(hidden_dim, len(label_maps.families))
+    def forward(self, input_ids, attention_mask, **kw):
+        h = self.backbone(input_ids=input_ids, attention_mask=attention_mask).last_hidden_state
+        if self.pool is None:
+            m = attention_mask.unsqueeze(-1).float(); pooled = (h*m).sum(1)/m.sum(1).clamp_min(1.0); weights=None
+        else:
+            pooled, weights = self.pool(h, attention_mask)
+        u = self.proj(pooled)
+        class_logits = self.class_head(u); class_logp = F.log_softmax(class_logits, dim=-1)
+        if self.use_hch:
+            fam_logp, raw = self.family_head(u, class_logp); fam_logits = fam_logp
+        else:
+            fam_logits = self.family_head(u); fam_logp = F.log_softmax(fam_logits, dim=-1); raw=fam_logits
+        return {'family_logits':fam_logits,'family_log_prob':fam_logp,'class_logits':class_logits,'class_log_prob':class_logp,'attention_weights':weights,'features':u,'raw_family_logits':raw}
+
+def simple_loss(outputs, family_labels, class_labels, cfg):
+    return F.cross_entropy(outputs['family_logits'], family_labels) + cfg.get('loss',{}).get('lambda_class',0.3)*F.cross_entropy(outputs['class_logits'], class_labels)
