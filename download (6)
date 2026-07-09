@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-set -euo pipefail
-DATA_DIR=${1:-data/CAZy-HABench30K}
-OUT_DIR=${2:-src2/results/main_benchmark}
-CONFIG=${3:-src2/configs/hieresm_default.yaml}
-for SEED in 1 7 42 2026 3407; do
-  python -m src2.hieresm.train --config "$CONFIG" --data_dir "$DATA_DIR" --out_dir "$OUT_DIR" --seed "$SEED"
-done
