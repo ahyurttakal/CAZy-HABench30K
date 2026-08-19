@@ -25,21 +25,34 @@ CAZy-HABench30K/
 │       ├── build_dataset.py
 │       ├── make_homology_split.py
 │       └── train_esm2_mtl.py
-├── src2/
-│   ├── README.md
-│   ├── requirements-paper2.txt
-│   ├── configs/
-│   │   └── hieresm_default.yaml
-│   ├── hieresm/
-│   │   ├── model.py
-│   │   ├── train.py
-│   │   ├── evaluate.py
-│   │   ├── data.py
-│   │   ├── metrics.py
-│   │   ├── baselines/
-│   │   └── analysis/
-│   ├── scripts/
-│   └── results/
+src2/
+├── hieresm/
+│   ├── model.py
+│   ├── train.py
+│   ├── evaluate.py
+│   ├── data.py
+│   ├── metrics.py
+│   ├── config.py
+│   ├── utils.py
+│   ├── baselines/
+│   │   ├── run_hbi_baseline.py
+│   │   └── run_hmmer_baseline.py
+│   └── analysis/
+│       ├── run_ablation.py
+│       ├── run_low_data.py
+│       ├── run_threshold_sensitivity.py
+│       ├── run_leakage_analysis.py
+│       ├── run_long_tail.py
+│       └── run_occlusion.py
+├── configs/
+│   └── hieresm_default.yaml
+├── scripts/
+│   └── run_main_benchmark.sh
+├── results/
+├── docs/
+│   └── PAPER2_REPRODUCIBILITY.md
+├── README.md
+└── requirements-paper2.txt
 ├── docs/
 │   ├── DATA_AVAILABILITY.md
 │   └── REPRODUCIBILITY.md
