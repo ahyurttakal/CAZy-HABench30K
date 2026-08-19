@@ -267,9 +267,10 @@ under review
 ```
 
 ```text
-Yurttakal, Ahmet Haşim; Erbay, Hasan (2026),
+Yurttakal A.H. & Erbay H.
 “CAZy-HABench30K: A Homology-Aware Benchmark Dataset for CAZy Enzyme Family Classification”,
-Mendeley Data, V2, doi: 10.17632/m9r9pb39jw.2
+Mendeley Data, V2, (2026).
+https://doi.org/10.17632/m9r9pb39jw.2
 ```
 
 ---
