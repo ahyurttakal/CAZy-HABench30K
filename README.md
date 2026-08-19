@@ -198,23 +198,6 @@ DOI: 10.17632/m9r9pb39jw.2
 Link: https://data.mendeley.com/datasets/m9r9pb39jw/2
 ```
 
-Expected local layout for Paper 2:
-
-```text
-data/CAZy-HABench30K/
-├── labels.csv
-└── splits/
-    ├── train.csv
-    ├── val.csv
-    └── test.csv
-```
-
-`labels.csv` should contain at least:
-
-```text
-protein_id,sequence,family,class
-```
-
 ---
 
 ## Installation
