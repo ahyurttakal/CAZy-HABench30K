@@ -251,7 +251,7 @@ under review
 
 ```text
 Yurttakal A.H. & Erbay H.
-“CAZy-HABench30K: A Homology-Aware Benchmark Dataset for CAZy Enzyme Family Classification”,
+CAZy-HABench30K: A Homology-Aware Benchmark Dataset for CAZy Enzyme Family Classification.
 Mendeley Data, V2, (2026).
 https://doi.org/10.17632/m9r9pb39jw.2
 ```
