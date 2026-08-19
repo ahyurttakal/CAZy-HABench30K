@@ -251,7 +251,7 @@ Large trained checkpoints are not required if fixed splits, prediction outputs, 
 
 ## Citation
 
-If you use the Paper 1 code, please cite:
+If you use the dataset, please cite:
 
 ```text
 Yurttakal A.H. & Erbay H.
@@ -260,9 +260,11 @@ Discover Artificial Intelligence (2026).
 https://doi.org/10.1007/s44163-026-01861-5
 ```
 
-If you use the Paper 2 HierESM code, please cite the associated manuscript once it becomes publicly available. Until then, cite this repository and the CAZy-HABench30K dataset.
-
-If you use the dataset, please cite the Mendeley Data record:
+```text
+Yurttakal A.H. & Erbay H.
+Hierarchy-Constrained Protein Language Models for Homology-Aware CAZy Enzyme Family Classification.
+under review
+```
 
 ```text
 Yurttakal, Ahmet Haşim; Erbay, Hasan (2026),
