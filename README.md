@@ -9,7 +9,7 @@ This repository contains code for two related manuscript tracks:
    DOI: https://doi.org/10.1007/s44163-026-01861-5
 
 2. **Paper 2 — under review**  
-   *Hierarchy-Constrained Protein Language Models for Homology-Aware CAZy Enzyme Family Classification*.  
+   Yurttakal A.H. & Erbay H. *Hierarchy-Constrained Protein Language Models for Homology-Aware CAZy Enzyme Family Classification*.  
    This manuscript introduces **HierESM**, a hierarchy-constrained protein language model for homology-aware CAZy family classification.
 
 The repository is organized so that the original Paper 1 code remains available under `src/`, while the Paper 2 code is provided separately under `src2/`.
