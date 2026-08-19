@@ -1,0 +1,74 @@
+cff-version: 1.2.0
+message: "If you use this repository or the CAZy-HABench30K dataset, please cite the relevant paper and the dataset."
+title: "CAZy-HABench30K: Reproducibility Code for Homology-Aware CAZy Enzyme Family Classification"
+abstract: "Reproducibility repository for CAZy-HABench30K, including code for the accepted ESM-2+Mean+MTL benchmark study and the under-review HierESM hierarchy-constrained protein language model study."
+authors:
+  - family-names: "Yurttakal"
+    given-names: "Ahmet Haşim"
+  - family-names: "Erbay"
+    given-names: "Hasan"
+repository-code: "https://github.com/ahyurttakal/CAZy-HABench30K"
+url: "https://github.com/ahyurttakal/CAZy-HABench30K"
+license: "MIT"
+date-released: "2026-06-18"
+keywords:
+  - "CAZy"
+  - "CAZyme classification"
+  - "homology-aware benchmark"
+  - "protein language models"
+  - "ESM-2"
+  - "LoRA"
+  - "HierESM"
+  - "MMseqs2"
+  - "HMMER"
+  - "homology leakage"
+  - "bioinformatics"
+
+preferred-citation:
+  type: article
+  title: "Homology-aware benchmarking of deep learning models for CAZy enzyme family classification"
+  authors:
+    - family-names: "Yurttakal"
+      given-names: "Ahmet Haşim"
+    - family-names: "Erbay"
+      given-names: "Hasan"
+  journal: "Discover Artificial Intelligence"
+  year: 2026
+  doi: "10.1007/s44163-026-01861-5"
+  url: "https://doi.org/10.1007/s44163-026-01861-5"
+
+references:
+  - type: article
+    title: "Homology-aware benchmarking of deep learning models for CAZy enzyme family classification"
+    authors:
+      - family-names: "Yurttakal"
+        given-names: "Ahmet Haşim"
+      - family-names: "Erbay"
+        given-names: "Hasan"
+    journal: "Discover Artificial Intelligence"
+    year: 2026
+    doi: "10.1007/s44163-026-01861-5"
+    url: "https://doi.org/10.1007/s44163-026-01861-5"
+
+  - type: article
+    title: "Hierarchy-Constrained Protein Language Models for Homology-Aware CAZy Enzyme Family Classification"
+    authors:
+      - family-names: "Yurttakal"
+        given-names: "Ahmet Haşim"
+      - family-names: "Erbay"
+        given-names: "Hasan"
+    year: 2026
+    notes: "Manuscript under review."
+
+  - type: dataset
+    title: "CAZy-HABench30K: A Homology-Aware Benchmark Dataset for CAZy Enzyme Family Classification"
+    authors:
+      - family-names: "Yurttakal"
+        given-names: "Ahmet Haşim"
+      - family-names: "Erbay"
+        given-names: "Hasan"
+    year: 2026
+    publisher: "Mendeley Data"
+    version: "V2"
+    doi: "10.17632/m9r9pb39jw.2"
+    url: "https://data.mendeley.com/datasets/m9r9pb39jw/2"
