@@ -2,17 +2,12 @@
 
 Reproducibility repository for **CAZy-HABench30K**, a homology-aware benchmark and modelling framework for CAZy enzyme family classification.
 
-This repository contains code for two related manuscript tracks:
+This repository contains code for below manuscript tracks:
 
-1. **Paper 1 — accepted/published**  
-   Yurttakal A.H. & Erbay H. *Homology-aware benchmarking of deep learning models for CAZy enzyme family classification*. **Discover Artificial Intelligence** (2026).  
+Yurttakal A.H. & Erbay H. *Homology-aware benchmarking of deep learning models for CAZy enzyme family classification*. **Discover Artificial Intelligence** (2026).  
    DOI: https://doi.org/10.1007/s44163-026-01861-5
 
-2. **Paper 2 — under review**  
-   Yurttakal A.H. & Erbay H. *Hierarchy-Constrained Protein Language Models for Homology-Aware CAZy Enzyme Family Classification*.  
-   This manuscript introduces **HierESM**, a hierarchy-constrained protein language model for homology-aware CAZy family classification.
-
-The repository is organized so that the original Paper 1 code remains available under `src/`, while the Paper 2 code is provided separately under `src2/`.
+The repository is organized so that the original Paper code remains available under `src/`.
 
 ---
 
@@ -20,40 +15,12 @@ The repository is organized so that the original Paper 1 code remains available 
 
 ```text
 CAZy-HABench30K/
-├── src/                         # Paper 1: ESM-2+Mean+MTL accepted study
+├── src/                         
 │   └── cazy_habench30k/
 │       ├── __init__.py
 │       ├── build_dataset.py
 │       ├── make_homology_split.py
 │       └── train_esm2_mtl.py
-│
-├── src2/                        # Paper 2: HierESM under-review study
-│   ├── configs/
-│   │   └── hieresm_default.yaml
-│   ├── hieresm/
-│   │   ├── __init__.py
-│   │   ├── config.py
-│   │   ├── data.py
-│   │   ├── evaluate.py
-│   │   ├── metrics.py
-│   │   ├── model.py
-│   │   ├── train.py
-│   │   ├── utils.py
-│   │   ├── baselines/
-│   │   │   ├── __init__.py
-│   │   │   ├── run_hbi_baseline.py
-│   │   │   └── run_hmmer_baseline.py
-│   │   └── analysis/
-│   │       ├── __init__.py
-│   │       ├── run_ablation.py
-│   │       ├── run_leakage_analysis.py
-│   │       ├── run_long_tail.py
-│   │       ├── run_low_data.py
-│   │       ├── run_occlusion.py
-│   │       └── run_threshold_sensitivity.py
-│   └── scripts/
-│       └── run_main_benchmark.sh
-│
 ├── docs/
 │   ├── DATA_AVAILABILITY.md
 │   └── REPRODUCIBILITY.md
@@ -65,11 +32,9 @@ CAZy-HABench30K/
 
 ---
 
-## Paper 1: ESM-2+Mean+MTL benchmark study
+## Paper: ESM-2+Mean+MTL benchmark study
 
-The first manuscript introduced the CAZy-HABench30K benchmark workflow, including dataset construction, MMseqs2-based cluster-disjoint splitting, and ESM-2+Mean+MTL model training/evaluation.
-
-**Published article**
+The manuscript introduced the CAZy-HABench30K benchmark workflow, including dataset construction, MMseqs2-based cluster-disjoint splitting, and ESM-2+Mean+MTL model training/evaluation.
 
 ```text
 Yurttakal A.H. & Erbay H.
@@ -116,77 +81,6 @@ python src/cazy_habench30k/train_esm2_mtl.py
 
 ---
 
-## Paper 2: HierESM hierarchy-constrained model
-
-The second manuscript introduces **HierESM**, a hierarchy-constrained protein language modelling framework for homology-aware CAZy family classification.
-
-HierESM combines:
-
-- ESM-2 35M frozen backbone
-- LoRA-based parameter-efficient adaptation
-- learnable attention pooling
-- Hierarchical Conditional Head for class–family consistency
-- LDAM-DRW for long-tail-aware learning
-
-**Manuscript status**
-
-```text
-Under review
-```
-
-**Code location**
-
-```text
-src2/
-```
-
-**Main Paper 2 components**
-
-- `src2/hieresm/model.py`  
-  HierESM architecture.
-
-- `src2/hieresm/train.py`  
-  Training entry point.
-
-- `src2/hieresm/evaluate.py`  
-  Prediction and metric evaluation.
-
-- `src2/hieresm/data.py`  
-  Dataset and split loaders.
-
-- `src2/hieresm/metrics.py`  
-  Macro-F1, weighted F1, MCC, balanced accuracy, and ECE.
-
-- `src2/hieresm/baselines/`  
-  HBI and HMMER baseline wrappers.
-
-- `src2/hieresm/analysis/`  
-  Ablation, low-data supervised evaluation, identity-threshold sensitivity, homology leakage, long-tail, and occlusion scripts.
-
-- `src2/configs/hieresm_default.yaml`  
-  Default HierESM configuration.
-
-- `src2/scripts/run_main_benchmark.sh`  
-  Multi-seed benchmark runner.
-
-**Example HierESM training command**
-
-```bash
-python -m src2.hieresm.train \
-  --config src2/configs/hieresm_default.yaml \
-  --data_dir data/CAZy-HABench30K \
-  --out_dir src2/results/main_benchmark \
-  --seed 1
-```
-
-**Run the multi-seed main benchmark**
-
-```bash
-bash src2/scripts/run_main_benchmark.sh data/CAZy-HABench30K src2/results/main_benchmark
-```
-
----
-
 ## Data
 
 The dataset itself is deposited separately in Mendeley Data.
@@ -207,12 +101,6 @@ A single top-level `requirements.txt` is provided for both manuscript tracks.
 ```bash
 pip install -r requirements.txt
 ```
-
-External command-line tools may also be required depending on which analyses are reproduced:
-
-- **MMseqs2** for homology-aware splitting and HBI nearest-neighbour baseline
-- **HMMER** for profile-HMM baseline
-- **MAFFT** or **Clustal Omega** if family-level multiple-sequence alignments are regenerated before HMMER profile construction
 
 ---
 
@@ -243,10 +131,6 @@ Discover Artificial Intelligence (2026).
 https://doi.org/10.1007/s44163-026-01861-5
 ```
 
-```text
-Yurttakal A.H. & Erbay H.
-Hierarchy-Constrained Protein Language Models for Homology-Aware CAZy Enzyme Family Classification.
-under review
 ```
 
 ```text
